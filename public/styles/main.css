@@ -1,0 +1,230 @@
+body{
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 800%;
+	animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+
+/* Style the form container */
+form {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+  }
+  
+  /* Style the search input */
+  input[type="text"] {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+
+.container-title{
+    top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.card-title{
+    margin-top: 100px;
+    font-family: 'Cormorant Garamond', serif;
+    color: #fff;
+    font-size: 3rem;
+    margin-top: 0;
+}
+
+
+.card-text{
+    display: flex;
+    justify-content: center;
+    max-width: 75%;
+    font-family: 'Cormorant Garamond', serif;
+    color: #fff;
+    flex-shrink: 1;
+    font-size: 1.5rem;
+    margin-bottom: 1px;
+    padding-bottom: 0%;
+    text-align:center;
+
+}
+
+.ingredients{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    list-style-type: none;
+}
+
+
+ul{
+    list-style-type: none;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+
+img{
+    display: flex;
+    justify-content: center;
+    flex-shrink: 2;
+    border-radius: 20px;
+    margin-bottom: 1px;
+    animation-name: border-color ;
+    animation-duration: 5s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate-reverse;
+    animation-fill-mode: forwards;
+    max-width:100%;
+}
+
+@keyframes border-color{
+    from{border: 5px solid #ee7752;};
+    to{border:5px solid  #23a6d5;}
+}
+
+
+.main-button{
+    display: flex;
+    justify-content: center;
+    margin-top: 1px;
+    padding-top: 1px;
+    margin-bottom: 1px;;
+    padding-bottom: 2px;
+}
+
+  
+.button{
+margin-top: 1px;
+margin-bottom: 10px;
+padding: 5px;
+align-items: center;
+appearance: none;
+background-clip: padding-box;
+background-color: initial;
+background-image: none;
+border-style: none;
+box-sizing: border-box;
+color: #fff;
+cursor: pointer;
+display: inline-block;
+flex-direction: row;
+flex-shrink: 0;
+font-family: Eina01,sans-serif;
+font-size: 16px;
+font-weight: 800;
+justify-content: center;
+line-height: 24px;
+margin: 0;
+min-height: 64px;
+outline: none;
+overflow: visible;
+padding: 19px 26px;
+pointer-events: auto;
+position: relative;
+text-align: center;
+text-decoration: none;
+text-transform: none;
+user-select: none;
+-webkit-user-select: none;
+touch-action: manipulation;
+vertical-align: middle;
+width: auto;
+word-break: keep-all;
+z-index: 0;
+}
+
+@media (min-width: 768px) {
+.button {
+    padding: 19px 32px;
+}
+}
+
+.button:before,
+.button:after {
+border-radius: 80px;
+}
+
+.button:before {
+background-image: linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+content: "";
+display: block;
+height: 100%;
+left: 0;
+overflow: hidden;
+position: absolute;
+top: 0;
+width: 100%;
+z-index: -2;
+}
+
+.button:after {
+background-color: initial;
+background-image: linear-gradient(#541a0f 0, #0c0d0d 100%);
+bottom: 4px;
+content: "";
+display: block;
+left: 4px;
+overflow: hidden;
+position: absolute;
+right: 4px;
+top: 4px;
+transition: all 100ms ease-out;
+z-index: -1;
+}
+
+.button:hover:not(:disabled):before {
+background: linear-gradient(92.83deg, rgb(255, 116, 38) 0%, rgb(249, 58, 19) 100%);
+}
+
+.button:hover:not(:disabled):after {
+bottom: 0;
+left: 0;
+right: 0;
+top: 0;
+transition-timing-function: ease-in;
+opacity: 0;
+}
+
+.button:active:not(:disabled) {
+color: #ccc;
+}
+
+.button:active:not(:disabled):before {
+background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+}
+
+.button:active:not(:disabled):after {
+background-image: linear-gradient(#541a0f 0, #0c0d0d 100%);
+bottom: 4px;
+left: 4px;
+right: 4px;
+top: 4px;
+}
+
+.button:disabled {
+cursor: default;
+opacity: .24;
+}

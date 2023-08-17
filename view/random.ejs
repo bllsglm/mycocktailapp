@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheCocktail</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<style>
+
+.collapsible{
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    animation: gradient 9s ease infinite;
+    background-size: 200% 200%;
+    font-family: 'Cormorant Garamond', serif;
+    color: #fff;
+    font-size: 25px;
+    width: 25%;
+    min-width: fit-content;
+    border-radius: 80px;
+    cursor: pointer;
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 5px;
+}
+
+.content{
+    display: none;
+}
+
+</style>
+<body>
+    <% if(locals.datas){ %>
+        <form action="/" method="post">
+            <input type="text" placeholder="Search for a cocktail" id="userInput" name="userInput">
+        </form>
+        <br>
+        <form class="main-button" action="/random" method="get">
+            <div><button class="button"><%=bartender%></button></div>
+        </form>
+        <% datas.forEach(function(data){ %>
+            <div class="container-title">
+                <div class="card-title"><%= data.strDrink  %></div>
+                <button type="button" class ="collapsible">Ingredients & Instructions </button>   
+                <div class="content card-text">
+                     <div class="ingredients">
+                        <% for (var i = 1; i <= 15; i++) { %>
+                            <% var ingredientKey = "strIngredient" + i; %>
+                            <% if (data[ingredientKey]) { %>
+                               <li> <%= data[ingredientKey] %></li>
+                            <% } %>
+                        <% } %>
+                    </div>
+                    <p>&</p>
+                    <%=  data.strInstructions %>(<%= data.strAlcoholic %>, <%=data.strGlass %>)
+                </div>
+                <img src="<%= data.strDrinkThumb %>" class="card-img-bottom" alt="...">
+            </div>
+    <% }) %>
+    <%  }else{%>
+        <h2>404 Cocktail not found! Time to channel your inner mixologist and try again?"</h2>
+    <% } %>   
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    
+    for(var i = 0 ; i < coll.length ; i++){
+        coll[i].addEventListener("click", function(){
+            var content = this.nextElementSibling;
+            if(content.style.display === "none" || content.style.display === ""){
+                content.style.display = "block"
+            }else{
+                content.style.display = "none"
+            }
+        })
+    }
+</script>
+
+</body>
+</html>
