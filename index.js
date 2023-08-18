@@ -2,12 +2,21 @@ import express, { response } from "express";
 import bodyparser from "body-parser";
 import axios from "axios";
 import { sentences } from "./mySentences.js";
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 
 
 const port = process.env.PORT || 3000;;
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const app = express();
 
-app.set("views" ,"/home/billsglm/Desktop/Web development BootCamp/Backend/TheCocktail/view")
+app.set("view engine", "ejs");
+app.set("views", join(__dirname, "view")); 
+
 
 app.use(express.static("public"));
 app.use(bodyparser.urlencoded({extended:true}));
@@ -22,7 +31,7 @@ app.get("/random", async(req,res)=>{
         const number = Math.floor(Math.random()*(uniqueSentences.length))
         const bartender = uniqueSentences[number];
         const datas = response.data.drinks;
-        res.render("random.ejs", {datas: datas, bartender: bartender})
+        res.render("random", {datas: datas, bartender: bartender})
         
     } catch (error) {
         // console.log(error);
@@ -41,7 +50,7 @@ app.get("/", async(req, res)=>{
     
         const bartender = sentences[Math.floor(Math.random()*(sentences.length))]
         // console.log(response.data.drinks[0])
-        res.render("index.ejs", {datas :datas,bartender: bartender } );
+        res.render("index", {datas :datas,bartender: bartender } );
         
         } catch (error) {
         //  console.log(error)
@@ -60,7 +69,7 @@ app.post("/", async(req, res)=>{
         const datas = response.data.drinks;
     
         const bartender = sentences[Math.floor(Math.random()*(sentences.length))];
-        res.render("index.ejs", {datas :datas, bartender: bartender } );
+        res.render("index", {datas :datas, bartender: bartender } );
         
         } catch (error) {
         //  console.log(error)
