@@ -4,7 +4,7 @@ import axios from "axios";
 import { sentences } from "./mySentences.js";
 
 
-const port = 3000;
+const port = process.env.PORT || 3000;;
 const app = express();
 
 app.set("views" ,"/home/billsglm/Desktop/Web development BootCamp/Backend/TheCocktail/view")
