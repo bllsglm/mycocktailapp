@@ -31,7 +31,7 @@ app.get("/random", async(req,res)=>{
     }
 })  
 
-var asd ="Pornstar"
+var asd ="mojito"
 const API_URL = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${asd}`
 app.get("/", async(req, res)=>{
     try {
